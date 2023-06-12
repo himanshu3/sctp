@@ -32,5 +32,4 @@ spec:
     protocol: SCTP
     port: 9090
     targetPort: 9090
-    nodePort: 36412
-    nodePort: 36412
+    nodePort: 32412
