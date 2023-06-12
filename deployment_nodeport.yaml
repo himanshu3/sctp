@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sctp-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sctp-server
+  template:
+    metadata:
+      labels:
+        app: sctp-server
+    spec:
+      containers:
+      - name: sctp-server
+        image: sctp-server
+        args: ["9090"]
+        ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sctp-server-service
+spec:
+  type: NodePort
+  selector:
+    app: sctp-server
+  ports:
+  - name: sctp
+    protocol: SCTP
+    port: 9090
+    targetPort: 9090
+    nodePort: 36412
+    nodePort: 36412
