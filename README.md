@@ -38,9 +38,9 @@ docker build -t sctp-server .
 To run a container using this image, use following command:
 
 ```
-docker run -it --rm -p [HOST_PORT]:[CONTAINER_PORT] sctp-server [PORT]
+docker run -d --rm --name test-sctp -p [HOST_PORT]:[CONTAINER_PORT]/sctp sctp-server [PORT]
 
-docker run -d --name test-sctp -p 36412:9090/sctp sctp-server 9090
+docker run -d --rm --name test-sctp -p 36412:9090/sctp sctp-server 9090
 ```
 
 `[HOST_PORT]` is the port number on the host machine that should be mapped to the container's port
